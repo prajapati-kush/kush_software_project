@@ -11,8 +11,12 @@ import java.util.Optional;
 @Service
 public class CompanyImplementation implements ICompany{
 
-    @Autowired
+  // @Autowired(required=true)
     ICompanyRepositary compRepo;
+
+    public CompanyImplementation(ICompanyRepositary compRepo) {
+        this.compRepo = compRepo;
+    }
 
     @Override
     @Transactional (readOnly = true)
