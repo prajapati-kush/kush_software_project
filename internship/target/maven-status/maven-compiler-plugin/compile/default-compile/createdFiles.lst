@@ -1,5 +1,0 @@
-com\internship\repositary\ICompanyRepositary.class
-com\internship\exception\CompanyNotFoundException.class
-com\internship\service\CompanyImplementation.class
-com\internship\App.class
-com\internship\exception\BadRequestException.class

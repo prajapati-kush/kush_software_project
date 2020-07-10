@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <title>HTML DEMO</title>'
+    <style>
+        img {
+            width: 100%;
+
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1>HTML Demo</h1>
+        
+       
+        <div id="list"></div>
+        <br>
+            
+    </div>
+   
+</body>
+<script>
+$(document).ready(function () {
+    
+        $.ajax({
+            url: "http://localhost:8010/api/internship/",
+            success: function (result) {
+                
+               
+                   $("#list").html(result)
+                
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    $("#error h6").html('Not connect.\n Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    $("#error h6").html('Requested page not found. [404]');
+                } else if (jqXHR.status == 500) {
+                    $("#error h6").html('Internal Server Error [500].');
+                } else if (exception === 'parsererror') {
+                    $("#error h6").html('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    $("#error h6").html('Time out error.');
+                } else if (exception === 'abort') {
+                    $("#error h6").html('Ajax request aborted.');
+                } else {
+                    $("#error h6").html(jqXHR.responseText);
+                }
+            }
+
+    });
+});
+</script>
+
+</html>
